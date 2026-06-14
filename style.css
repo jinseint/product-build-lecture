@@ -95,3 +95,57 @@ h1 {
     font-size: 24px;
     padding: 0;
 }
+
+.divider {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid var(--number-border);
+}
+
+.contact-form {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.contact-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--number-border);
+    background-color: var(--number-bg);
+    color: var(--text-color);
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.contact-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--btn-hover);
+}
