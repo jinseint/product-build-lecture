@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const resultContainer = document.getElementById('result');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Theme Logic
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const targetTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        localStorage.setItem('theme', targetTheme);
+    });
 
     const generateLottoNumbers = () => {
         resultContainer.innerHTML = ''; // Clear previous numbers

@@ -1,28 +1,54 @@
+:root {
+    --bg-color: #f0f2f5;
+    --container-bg: white;
+    --text-color: #333;
+    --btn-bg: #4CAF50;
+    --btn-hover: #45a049;
+    --number-bg: #f9f9f9;
+    --number-border: #ddd;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+    --bg-color: #18191a;
+    --container-bg: #242526;
+    --text-color: #e4e6eb;
+    --btn-bg: #2d88ff;
+    --btn-hover: #1b74e4;
+    --number-bg: #3a3b3c;
+    --number-border: #444;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     text-align: center;
-    background-color: white;
+    background-color: var(--container-bg);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
+    position: relative;
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 20px;
 }
 
 #generate-btn {
-    background-color: #4CAF50;
+    background-color: var(--btn-bg);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -34,7 +60,7 @@ h1 {
 }
 
 #generate-btn:hover {
-    background-color: #45a049;
+    background-color: var(--btn-hover);
 }
 
 .result-container {
@@ -48,12 +74,24 @@ h1 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--number-bg);
+    border: 1px solid var(--number-border);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 0;
 }
