@@ -1,120 +1,159 @@
 :root {
-    --bg-color: #f0f2f5;
-    --container-bg: white;
-    --text-color: #333;
-    --btn-bg: #4CAF50;
-    --btn-hover: #45a049;
-    --number-bg: #f9f9f9;
-    --number-border: #ddd;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --bg-color: #f8f9fa;
+    --container-bg: #ffffff;
+    --text-color: #212529;
+    --accent-color: #007bff;
+    --secondary-text: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme='dark'] {
-    --bg-color: #18191a;
-    --container-bg: #242526;
-    --text-color: #e4e6eb;
-    --btn-bg: #2d88ff;
-    --btn-hover: #1b74e4;
-    --number-bg: #3a3b3c;
-    --number-border: #444;
-    --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+body.dark-mode {
+    --bg-color: #121212;
+    --container-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #3700b3;
+    --secondary-text: #b0b0b0;
+    --border-color: #333333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 body {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
     margin: 0;
-    padding: 40px 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    box-sizing: border-box;
-}
-
-.container {
-    text-align: center;
-    background-color: var(--container-bg);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    transition: background-color 0.3s ease;
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-}
-
-h1 {
-    color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-#generate-btn {
-    background-color: var(--btn-bg);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-#generate-btn:hover {
-    background-color: var(--btn-hover);
-}
-
-.result-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.lotto-number {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--number-bg);
-    border: 1px solid var(--number-border);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--text-color);
-    transition: all 0.3s ease;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    margin: 20px 0;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+p {
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
 }
 
 .theme-toggle {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+    top: 20px;
+    right: 20px;
     background: none;
     border: none;
-    font-size: 24px;
-    padding: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Upload Section */
+.upload-section {
+    margin-bottom: 2rem;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.upload-btn:hover {
+    opacity: 0.9;
+}
+
+/* Image Preview */
+.image-container {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+}
+
+/* Results */
+.label-container {
+    margin-bottom: 2rem;
+}
+
+.prediction-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.label {
+    width: 80px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.bar-container {
+    flex-grow: 1;
+    background-color: var(--border-color);
+    height: 20px;
+    border-radius: 10px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    background-color: var(--accent-color);
+    transition: width 0.5s ease-out;
+}
+
+.percentage {
+    width: 40px;
+    font-weight: bold;
+}
+
+.loading {
+    font-style: italic;
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
 }
 
 .divider {
-    margin: 30px 0;
     border: 0;
-    border-top: 1px solid var(--number-border);
+    border-top: 1px solid var(--border-color);
+    margin: 2.5rem 0;
 }
 
-.contact-form {
-    margin-top: 20px;
-    text-align: left;
-}
-
+/* Form Styles */
 .contact-form h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
 }
 
 .contact-form form {
@@ -123,38 +162,30 @@ h1 {
     gap: 15px;
 }
 
-.contact-form input,
+.contact-form input, 
 .contact-form textarea {
     padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--number-border);
-    background-color: var(--number-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-color);
     color: var(--text-color);
-    font-size: 14px;
-    font-family: inherit;
-}
-
-.contact-form textarea {
-    height: 100px;
-    resize: vertical;
 }
 
 .submit-btn {
-    background-color: var(--btn-bg);
+    padding: 12px;
+    background-color: #28a745;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
 .submit-btn:hover {
-    background-color: var(--btn-hover);
+    background-color: #218838;
 }
 
 #disqus_thread {
-    margin-top: 30px;
-    text-align: left;
+    margin-top: 2rem;
 }

@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>Cat or Dog? Classifier</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-        <h1>Lotto Number Generator</h1>
-        <button id="generate-btn">Generate Numbers</button>
-        <div id="result" class="result-container"></div>
+        <h1>Cat or Dog? AI Classifier</h1>
+        <p>Upload a photo of your pet, and our AI will tell you if it's a cat or a dog!</p>
+        
+        <div class="upload-section">
+            <input type="file" id="image-upload" accept="image/*" hidden>
+            <label for="image-upload" class="upload-btn">Choose an Image</label>
+        </div>
+
+        <div id="image-container" class="image-container">
+            <img id="preview-image" src="#" alt="Uploaded Image Preview" style="display: none;">
+        </div>
+
+        <div id="label-container" class="label-container">
+            <!-- Classification results will appear here -->
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">Analyzing...</div>
 
         <hr class="divider">
 
@@ -37,6 +51,10 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+
+    <!-- TensorFlow.js and Teachable Machine Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

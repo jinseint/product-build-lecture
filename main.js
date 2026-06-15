@@ -1,38 +1,73 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const generateBtn = document.getElementById('generate-btn');
-    const resultContainer = document.getElementById('result');
-    const themeToggle = document.getElementById('theme-toggle');
+// Teachable Machine model URL
+const URL = "https://teachablemachine.withgoogle.com/models/m1_F-kH4p/";
 
-    // Theme Logic
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
+let model, labelContainer, maxPredictions;
 
-    themeToggle.addEventListener('click', () => {
-        const targetTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', targetTheme);
-        localStorage.setItem('theme', targetTheme);
-    });
+// Load the image model
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
 
-    const generateLottoNumbers = () => {
-        resultContainer.innerHTML = ''; // Clear previous numbers
-        const numbers = new Set();
-        while (numbers.size < 6) {
-            const randomNumber = Math.floor(Math.random() * 45) + 1;
-            numbers.add(randomNumber);
-        }
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+}
 
-        const sortedNumbers = Array.from(numbers).sort((a, b) => a - b);
+// Handle image upload and prediction
+const imageUpload = document.getElementById('image-upload');
+const previewImage = document.getElementById('preview-image');
+const loading = document.getElementById('loading');
+labelContainer = document.getElementById('label-container');
 
-        sortedNumbers.forEach(number => {
-            const numberDiv = document.createElement('div');
-            numberDiv.className = 'lotto-number';
-            numberDiv.textContent = number;
-            resultContainer.appendChild(numberDiv);
-        });
-    };
+imageUpload.addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            previewImage.src = e.target.result;
+            previewImage.style.display = 'block';
+            
+            loading.style.display = 'block';
+            labelContainer.innerHTML = '';
 
-    generateBtn.addEventListener('click', generateLottoNumbers);
+            if (!model) await init();
+            await predict();
+            loading.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+});
 
-    // Generate numbers on initial load
-    generateLottoNumbers();
+async function predict() {
+    const prediction = await model.predict(previewImage);
+    for (let i = 0; i < maxPredictions; i++) {
+        const classPrediction =
+            `<div class="prediction-item">
+                <span class="label">${prediction[i].className}:</span>
+                <div class="bar-container">
+                    <div class="bar" style="width: ${Math.round(prediction[i].probability * 100)}%"></div>
+                </div>
+                <span class="percentage">${Math.round(prediction[i].probability * 100)}%</span>
+            </div>`;
+        labelContainer.innerHTML += classPrediction;
+    }
+}
+
+// Theme Toggle Logic
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme preference
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme) {
+    body.classList.add(currentTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+    if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light-mode');
+    } else {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    }
 });
