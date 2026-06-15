@@ -19,8 +19,8 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat vs Dog AI - Intelligent Pet Image Classifier</title>
-    <meta name="description" content="Use our advanced AI technology to instantly identify whether your pet photo shows a cat or a dog. Fast, free, and educational pet classification.">
+    <title data-key="title">Cat vs Dog AI - Intelligent Pet Image Classifier</title>
+    <meta name="description" data-key="description" content="Use our advanced AI technology to instantly identify whether your pet photo shows a cat or a dog. Fast, free, and educational pet classification.">
     <link rel="stylesheet" href="style.css">
     <meta name="google-adsense-account" content="ca-pub-1217471040790039">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1217471040790039"
@@ -29,27 +29,33 @@
 <body>
     <div class="container">
         <header>
-            <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
-            <h1>Cat vs Dog AI</h1>
-            <p class="subtitle">Intelligent Image Recognition Technology</p>
+            <div class="header-top">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌓</button>
+                <div class="lang-switcher">
+                    <button id="lang-en" class="lang-btn active">English</button>
+                    <button id="lang-ko" class="lang-btn">한국어</button>
+                </div>
+            </div>
+            <h1 data-key="h1">Cat vs Dog AI</h1>
+            <p class="subtitle" data-key="subtitle">Intelligent Image Recognition Technology</p>
         </header>
 
         <main>
             <section class="tool-section">
-                <p>Upload a photo of your pet, and our AI model will analyze its features to provide an accurate classification.</p>
+                <p data-key="tool-intro">Upload a photo of your pet, and our AI model will analyze its features to provide an accurate classification.</p>
                 
                 <div class="upload-section">
                     <input type="file" id="image-upload" accept="image/*" hidden>
-                    <label for="image-upload" class="upload-btn">Analyze Your Pet Photo</label>
+                    <label for="image-upload" class="upload-btn" data-key="upload-btn">Analyze Your Pet Photo</label>
                 </div>
 
                 <div id="image-container" class="image-container">
-                    <img id="preview-image" src="#" alt="Uploaded Image Preview" style="display: none;">
+                    <img id="preview-image" src="#" alt="Uploaded Image Preview" data-key="preview-alt" style="display: none;">
                 </div>
 
                 <div id="loading" class="loading" style="display: none;">
                     <div class="spinner"></div>
-                    <p>AI is analyzing image patterns...</p>
+                    <p data-key="loading-text">AI is analyzing image patterns...</p>
                 </div>
 
                 <div id="label-container" class="label-container">
@@ -60,20 +66,20 @@
             <hr class="divider">
 
             <section class="info-section">
-                <h2>About the Technology</h2>
-                <p>This classifier uses <strong>Convolutional Neural Networks (CNN)</strong>, a class of deep neural networks most commonly applied to analyzing visual imagery. Our model has been trained on thousands of diverse images of cats and dogs to recognize specific anatomical features and patterns.</p>
+                <h2 data-key="about-title">About the Technology</h2>
+                <p data-key="about-p1">This classifier uses <strong data-key="about-strong">Convolutional Neural Networks (CNN)</strong>, a class of deep neural networks most commonly applied to analyzing visual imagery. Our model has been trained on thousands of diverse images of cats and dogs to recognize specific anatomical features and patterns.</p>
                 
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3>How it Works</h3>
-                        <p>The AI looks for shapes, edges, and textures (like fur patterns or ear shapes) to distinguish between feline and canine characteristics.</p>
+                        <h3 data-key="how-it-works-title">How it Works</h3>
+                        <p data-key="how-it-works-p">The AI looks for shapes, edges, and textures (like fur patterns or ear shapes) to distinguish between feline and canine characteristics.</p>
                     </div>
                     <div class="info-card">
-                        <h3>Tips for Accuracy</h3>
+                        <h3 data-key="accuracy-title">Tips for Accuracy</h3>
                         <ul>
-                            <li>Ensure the pet is clearly visible.</li>
-                            <li>Use good lighting for better feature detection.</li>
-                            <li>A single subject in the frame works best.</li>
+                            <li data-key="accuracy-li1">Ensure the pet is clearly visible.</li>
+                            <li data-key="accuracy-li2">Use good lighting for better feature detection.</li>
+                            <li data-key="accuracy-li3">A single subject in the frame works best.</li>
                         </ul>
                     </div>
                 </div>
@@ -82,28 +88,28 @@
             <hr class="divider">
 
             <section class="contact-form">
-                <h2>Partnership & Feedback</h2>
-                <p>Have suggestions to improve our AI? Interested in a partnership? Let us know!</p>
+                <h2 data-key="contact-title">Partnership & Feedback</h2>
+                <p data-key="contact-p">Have suggestions to improve our AI? Interested in a partnership? Let us know!</p>
                 <form action="https://formspree.io/f/xdavyeop" method="POST">
-                    <input type="email" name="email" placeholder="Your Email Address" required>
-                    <textarea name="message" placeholder="How can we help you?" required></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <input type="email" name="email" placeholder="Your Email Address" data-key="form-email" required>
+                    <textarea name="message" placeholder="How can we help you?" data-key="form-message" required></textarea>
+                    <button type="submit" class="submit-btn" data-key="form-submit">Send Message</button>
                 </form>
             </section>
 
             <hr class="divider">
 
             <section class="comments-section">
-                <h2>Community Discussion</h2>
+                <h2 data-key="comments-title">Community Discussion</h2>
                 <div id="disqus_thread"></div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2024 Cat vs Dog AI Classifier. All rights reserved.</p>
+            <p data-key="footer-copyright">&copy; 2024 Cat vs Dog AI Classifier. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="#" data-key="footer-privacy">Privacy Policy</a>
+                <a href="#" data-key="footer-terms">Terms of Service</a>
             </div>
         </footer>
 
